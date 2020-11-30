@@ -30,6 +30,17 @@ app.post('/todo', (req, res) => {
   )
 })
 
+app.get('todos', () => { 
+  Todo.find()
+    .then((todos) => { 
+      res.send(todos)
+    })
+    .catch((err) => { 
+      console.log(err)
+      res.status(400).send(err)
+  })
+})
+
 app.listen(PORT, () => {
   console.log(`App started on port ${PORT}`)
 })
